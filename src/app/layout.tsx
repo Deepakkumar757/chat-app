@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { MantineProvider, BackgroundImage } from '@mantine/core'
+import SocketProvider from '@/context/socketContext'
 import './globals.css'
 import '@mantine/core/styles.css'
 
@@ -22,7 +23,9 @@ export default function RootLayout ({
             h={'100vh'}
             w={'100vw'}
           >
-            {children}
+            <SocketProvider>
+                {children}
+            </SocketProvider>
           </BackgroundImage>
         </MantineProvider>
       </body>

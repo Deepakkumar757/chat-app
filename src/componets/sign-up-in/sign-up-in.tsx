@@ -144,7 +144,7 @@
 
 // export default Form;
 
-import React from 'react'
+import React, { useContext } from 'react'
 import {
   // BackgroundImage,
   Space,
@@ -158,17 +158,14 @@ import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import { IconUser, IconLock, IconMail } from '@tabler/icons-react'
 import Class from './style.module.scss'
+import { SocketContext } from '@/context/socketContext'
 
 const SignUpIn = (): JSX.Element => {
   const path = usePathname()
   const router = useRouter()
+  const { connect } = useContext(SocketContext)
   return (
     <Container p={0} m={0} h={'100vh'} miw={'100vw'}>
-      {/* <BackgroundImage
-        src="https://wallpapers.com/images/featured/dark-theme-background-q62o6998n8bqxzrf.jpg"
-        h={'100vh'}
-        w={'100vw'}
-      > */}
       <Center h={'100%'}>
         <Card
           w={{ sm: '40%', md: '40%', lg: '400px', xs: '80%' }}
@@ -214,7 +211,10 @@ const SignUpIn = (): JSX.Element => {
                   opacity={0.9}
                   className={Class.btn}
                   radius={'md'}
-                  onClick={() => { router.push('/') }}>
+                  onClick={() => {
+                    router.push('/')
+                    connect()
+                  }}>
                   Login
                 </Button>
               </Center>

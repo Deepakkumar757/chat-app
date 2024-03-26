@@ -3,3 +3,13 @@
         display: none !important;
     }
 }
+
+.msg-btn{
+    border: none;
+    input{
+        background-color: transparent;
+    }
+    &:focus-visible{
+        border: none;
+    }
+}
